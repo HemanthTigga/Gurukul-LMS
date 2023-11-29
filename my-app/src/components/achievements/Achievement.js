@@ -24,7 +24,7 @@ const Achievement = () => {
     };
   }, []);
   return (
-    <div className='w-full bg-[#2e184f] py-24'>
+    <div className='w-full bg-[#24153D] py-24'>
         <div className='md:max-w-[1280px] m-auto grid md:grid-cols-2 max-w-[600px]  px-4 md:px-0'>
             
             <div className='flex flex-col justify-center '>

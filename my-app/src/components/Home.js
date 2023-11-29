@@ -28,10 +28,6 @@ const Home = () => {
       </section>
       <Feedback />
       <CTA />
-      <section onMouseEnter={() => { setscaling(true); setColor('white') }}
-        onMouseLeave={() => { setscaling(false); setColor('white') }}>
-        <Footer />
-      </section>
     </div>
   )
 }

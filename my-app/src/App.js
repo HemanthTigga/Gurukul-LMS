@@ -23,6 +23,8 @@ import { selectIsConnectedToRoom, useHMSActions, useHMSStore } from "@100mslive/
 import Room from './components/support/Room';
 import { SignUp } from './components/signin/SignUp';
 import SignIn from './components/signin/SignIn';
+import Contact from './components/contact/Contact';
+import AllUsers from './components/AllUsers/AllUsers';
 
 
 const endPoint = "https://prod-in2.100ms.live/hmsapi/hemanth-videoconf-003.app.100ms.live/";
@@ -77,10 +79,13 @@ function App() {
         <Routes>
           <Route path='/register' element={<SignUp/> }/>
           <Route path='/login' element={<SignIn onSignIn={handleSignIn}/> }/>
+          <Route path='/contact' element={<Contact/> }/>
+          <Route path='/allusers' element={<AllUsers/> }/>
           <Route path="/" element={isLoggedIn?<Home />:<SignUp/> } />
           {/* <Route path="/support" element={<Support />} /> */}
-          {/* <Route path="/support" element={isConnected?<Room/> :<Support handleSubmit={handleSubmit} />} /> */}
+          <Route path="/support" element={isConnected?<Room/> :<Support handleSubmit={handleSubmit} />} />
         </Routes>
+        {/* <Footer/> */}
       </Router>
     </div>
     // docs.100ms.live/v2/web-frameworks/Getting-started-react

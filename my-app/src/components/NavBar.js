@@ -31,7 +31,7 @@ import {
 import gurukul1 from '../assets/gurukul_logo.png';
 import gurukul2 from '../assets/gurukul_logo_1.png'
 import SignIn from "./signin/SignIn";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const navListMenuItems = [
   {
@@ -115,6 +115,7 @@ function NavListMenu() {
     ),
   );
 
+  
   return (
     <React.Fragment>
       <Menu
@@ -159,6 +160,13 @@ function NavListMenu() {
 }
 
 function NavList() {
+  const  navigate = useNavigate()
+  const handleContact=()=>{
+    navigate('/contact');
+  }
+  const handleSupport=()=>{
+    navigate('/support');
+  }
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
       <Typography
@@ -178,9 +186,30 @@ function NavList() {
         color="white"
         className="font-medium"
       >
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
-          Contact Us
+
+        <ListItem 
+        className="flex items-center gap-2 py-2 pr-4"
+        onClick={handleContact}
+        >
+          Contact Me
         </ListItem>
+        
+      </Typography>
+      <Typography
+        as="a"
+        href="#"
+        variant="small"
+        color="white"
+        className="font-medium"
+      >
+
+        <ListItem 
+        className="flex items-center gap-2 py-2 pr-4"
+        onClick={handleSupport}
+        >
+          1:1 Support
+        </ListItem>
+        
       </Typography>
     </List>
   );

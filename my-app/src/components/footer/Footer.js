@@ -1,73 +1,138 @@
-import React from 'react'
-import { logo } from '../../assets'
-import {FaFacebookF,FaDribbble,FaLinkedinIn,FaInstagram,FaBehance} from 'react-icons/fa'
+import React from "react";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <div className='w-full bg-black py-24'>
-        <div className='md:max-w-[1480px] m-auto grid md:grid-cols-5 max-[780px]:grid-cols-2  gap-8 max-w-[600px]  px-4 md:px-0'>
-            
-            <div className='col-span-2'>
-                <img src={logo} className="h-[25px]" />
-                <h3 className='text-2xl font-bold mt-10'>Contact Us</h3>
-                <h3 className='py-2 text-[#a6abaf]'>Call : +123 400 123</h3>
-                <h3 className='py-2 text-[#d7d9dc]'>Praesent nulla massa, hendrerit <br></br> vestibulum gravida in, feugiat auctor felis.</h3>
-                <h3 className='py-2 text-[#d7d9dc]'>Email: example@mail.com</h3>
-                <div className='flex gap-4 py-4'>
-                        <div className='p-4 bg-[#E9F8F3] rounded-xl'><FaFacebookF size={25} style={{color:'#4DC39E'}} /></div>
-                        <div className='p-4 bg-[#E9F8F3] rounded-xl'><FaDribbble size={25} style={{color:'#4DC39E'}} /></div>
-                        <div className='p-4 bg-[#E9F8F3] rounded-xl'><FaLinkedinIn size={25} style={{color:'#4DC39E'}} /></div>
-                        <div className='p-4 bg-[#E9F8F3] rounded-xl'><FaInstagram size={25} style={{color:'#4DC39E'}} /></div>
-                        <div className='p-4 bg-[#E9F8F3] rounded-xl'><FaBehance size={25} style={{color:'#4DC39E'}} /></div>
-
-                </div>
-
+    <footer className="relative bg-gray-300 pt-8 pb-6">
+      <div
+        className=" bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        style={{ height: "80px" }}
+      >
+        <svg
+          className="absolute bottom-0 overflow-hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          y="0"
+        >
+          <polygon
+            className="text-gray-300 fill-current"
+            points="2560 0 2560 100 0 100"
+          ></polygon>
+        </svg>
+      </div>
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap">
+          <div className="w-full lg:w-6/12 px-4">
+            <h4 className="text-3xl font-semibold text-black">
+              Let's keep in touch!
+            </h4>
+            <h5 className="text-lg mt-0 mb-2 text-gray-700">
+              Find us on any of these platforms, we respond 1-2 business days.
+            </h5>
+            <div className="mt-6">
+              <button
+                className="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                {/* <i className="flex fab fa-twitter"></i> */}
+                <img src="https://cdn-icons-png.flaticon.com/128/733/733579.png" />
+              </button>
+              <button
+                className="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                {/* <i className="flex fab fa-facebook-square"></i> */}
+                <img src="https://cdn-icons-png.flaticon.com/128/733/733547.png"/>
+              </button>
+              <button
+                className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                {/* <i className="flex fab fa-dribbble"></i> */}
+                
+                <img src="https://cdn-icons-png.flaticon.com/128/4401/4401391.png"/>
+              </button>
+              <button
+                className="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                {/* <i className="flex fab fa-github"></i> */}
+                <img src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"/>
+              </button>
             </div>
-
-            <div>
-                <h3 className='text-2xl font-bold'>Explore</h3>
-                <ul className='py-6 text-[#aaabac]'>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Home</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>About</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Course</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Blog</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Contact</li>
+          </div>
+          <div className="w-full lg:w-6/12 px-4">
+            <div className="flex flex-wrap items-top mb-6">
+              <div className="w-full lg:w-4/12 px-4 ml-auto">
+                <span className="block uppercase text-gray-600 text-sm font-semibold mb-2">
+                  Useful Links
+                </span>
+                <ul className="list-unstyled">
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://www.creative-tim.com/presentation">About Us
+                    </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://blog.creative-tim.com">Blog
+                    </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://www.github.com/creativetimofficial">Github
+                    </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://www.creative-tim.com/bootstrap-themes/free">Free Products
+                    </a>
+                  </li>
 
                 </ul>
-            </div>
-
-            <div>
-                <h3 className='text-2xl font-bold'>Category</h3>
-                <ul className='py-6 text-[#aaabac]'>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Design</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Development</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Marketing</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Business</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Lifestyle</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Photography</li>
-                    <li className='py-2 hover:text-[#4DC39E] cursor-pointer'>Music</li>
-
+              </div>
+              <div className="w-full lg:w-4/12 px-4">
+                <span className="block uppercase text-gray-600 text-sm font-semibold mb-2">
+                  Other Resources
+                </span>
+                <ul className="list-unstyled">
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                    href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">MIT License
+                  </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://creative-tim.com/terms">Terms & Conditions
+                    </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://creative-tim.com/privacy">Privacy Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        href="https://creative-tim.com/contact-us">Contact Us
+                    </a>
+                  </li>
                 </ul>
+
+              </div>
             </div>
-
-            <div className='max-[780px]:col-span-2'>
-                <h3 className='text-2xl font-bold'>Subscribe</h3>
-                <h3 className='py-2 text-[#c1c3c5]'>Praesent nulla massa, hendrerit <br></br> vestibulum gravida in, feugiat auctor felis.</h3>
-                <form className='py-4'>
-                    <input 
-                        className='bg-gray p-4 w-full rounded' 
-                        placeholder='Email here' 
-                    />
-                    <button className='max-[780px]:w-full my-4 px-5 py-3 rounded-md bg-[#20B486] text-white font-medium'>Subscribe Now</button>
-
-                </form>
-
-
-            </div>
-        
+          </div>
         </div>
-    </div>
-  )
+        <hr className="my-6 border-gray-400" />
+        <div className="flex flex-wrap items-center md:justify-between justify-center">
+          <div className="w-full md:w-4/12 px-4 mx-auto text-center">
+            <div className="text-sm text-gray-600 font-semibold py-1">
+              Copyright © {new Date().getFullYear()}{" "}a
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }
-
-export default Footer
