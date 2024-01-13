@@ -1,6 +1,4 @@
-#root{
-    font-family: 'Public Sans', sans-serif;
-}
+
 .slick-prev:before, .slick-next:before{
     font-size: 40px;
 }
@@ -16,6 +14,7 @@ body::-webkit-scrollbar{
     background-image: url("https://img.freepik.com/free-vector/dark-gradient-background-with-copy-space_53876-99548.jpg?w=1060&t=st=1700166795~exp=1700167395~hmac=1575f5c8b333871b5f8239c0032a59033117c5a415b24ad3c4c7307ca9d58a56");
 
 }
+
 .title {
     font-size: 10rem;
   }

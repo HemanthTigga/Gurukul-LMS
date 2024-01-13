@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import CursorAnimation from './components/cursor_animation/CursorAnimation'
 import Courses from './components/courses/Courses';
 import Companies from './components/companies/Companies';
@@ -25,6 +25,22 @@ import { SignUp } from './components/signin/SignUp';
 import SignIn from './components/signin/SignIn';
 import Contact from './components/contact/Contact';
 import AllUsers from './components/AllUsers/AllUsers';
+import { createTheme } from '@mui/material/styles';
+import { themeSettings } from 'theme';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { useSelector } from 'react-redux';
+import Layout from 'components/scenes/layout';
+import AdminDashboard from 'components/scenes/dashboard';
+import Products from 'components/scenes/products';
+import Customers from 'components/scenes/customers';
+import Transactions from 'components/scenes/transactions';
+import Geography from 'components/scenes/geography.js';
+import Overview from 'components/scenes/overview';
+import Daily from 'components/scenes/daily';
+import Monthly from 'components/scenes/monthly';
+import Breakdown from 'components/scenes/breakdown';
+import Admin from 'components/scenes/admin';
+import Performance from 'components/scenes/performance';
 
 
 const endPoint = "https://prod-in2.100ms.live/hmsapi/hemanth-videoconf-003.app.100ms.live/";
@@ -40,8 +56,8 @@ const getToken = async (user_id) => {
         room_id: "6560ecec3bc2e1189563106f"
       })
     });
-    const {token} = await response.json();
-    return token;
+  const { token } = await response.json();
+  return token;
 };
 
 
@@ -52,16 +68,20 @@ function App() {
   // const [scaling, setscaling] = useState(false);
   // const [color, setColor] = useState('white');
   const hmsActions = useHMSActions();
-  const isConnected = useHMSStore(selectIsConnectedToRoom); 
+  const isConnected = useHMSStore(selectIsConnectedToRoom);
   const handleSubmit = async (userName) => {
     const token = await getToken(userName);
-    hmsActions.join({authToken: token, userName});
+    hmsActions.join({ authToken: token, userName });
   };
 
   const [isLoggedIn, setLoggedIn] = useState(false);
   const handleSignIn = () => {
     setLoggedIn(true);
   };
+
+  const mode = useSelector((state) => state.global.mode);
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
   return (
     <div className="App"
     >
@@ -76,16 +96,36 @@ function App() {
         </button> */}
 
       <Router>
-        <Routes>
-          <Route path='/register' element={<SignUp/> }/>
-          <Route path='/login' element={<SignIn onSignIn={handleSignIn}/> }/>
-          <Route path='/contact' element={<Contact/> }/>
-          <Route path='/allusers' element={<AllUsers/> }/>
-          <Route path="/" element={isLoggedIn?<Home />:<SignUp/> } />
-          {/* <Route path="/support" element={<Support />} /> */}
-          <Route path="/support" element={isConnected?<Room/> :<Support handleSubmit={handleSubmit} />} />
-        </Routes>
-        {/* <Footer/> */}
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+
+          <Routes>
+            <Route path='/register' element={<SignUp />} />
+            <Route path='/login' element={<SignIn onSignIn={handleSignIn} />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/allusers' element={<AllUsers />} />
+            <Route path="/" element={isLoggedIn ? <Home /> : <SignUp />} />
+            {/* <Route path="/support" element={<Support />} /> */}
+            <Route path="/support" element={isConnected ? <Room /> : <Support handleSubmit={handleSubmit} />} />
+            <Route path='/layout' element={<Layout />}>
+              {/* <Route path="/" element={<Navigate to="/admindashboard" replace />}/> 
+              <Route path="/admindashboard" element={<AdminDashboard />} />  */}
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="products" element={<Products />} />
+              <Route path="customers" element={<Customers />} />
+              <Route path="transactions" element={<Transactions />} />
+              <Route path="geography" element={<Geography />} />
+              <Route path="overview" element={<Overview />} />
+              <Route path="daily" element={<Daily />} />
+              <Route path="monthly" element={<Monthly />} />
+              <Route path="breakdown" element={<Breakdown />} />
+              <Route path="admin" element={<Admin />} />
+              <Route path="performance" element={<Performance />} />
+            </Route>
+          </Routes>
+          {/* <Footer /> */}
+        </ThemeProvider>
       </Router>
     </div>
     // docs.100ms.live/v2/web-frameworks/Getting-started-react

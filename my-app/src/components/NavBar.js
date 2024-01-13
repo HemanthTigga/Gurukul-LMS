@@ -162,13 +162,16 @@ function NavListMenu() {
 function NavList() {
   const  navigate = useNavigate()
   const handleContact=()=>{
-    navigate('/contact');
+    navigate('/contact', { replace: true });
   }
   const handleSupport=()=>{
-    navigate('/support');
+    navigate('/support', { replace: true });
+  }
+  const handleUsers=()=>{
+    navigate('/allusers', { replace: true });
   }
   return (
-    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
+    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 gap-2">
       <Typography
         as="a"
         href="#"
@@ -192,6 +195,22 @@ function NavList() {
         onClick={handleContact}
         >
           Contact Me
+        </ListItem>
+        
+      </Typography>
+      <Typography
+        as="a"
+        href="#"
+        variant="small"
+        color="white"
+        className="font-medium"
+      >
+
+        <ListItem 
+        className="flex items-center gap-2 py-2 pr-4"
+        onClick={handleUsers}
+        >
+          Users
         </ListItem>
         
       </Typography>
@@ -241,22 +260,20 @@ export function NavBar() {
         <div className="hidden lg:block">
           <NavList />
         </div>
-        <div className="hidden gap-2 lg:flex">
+        {/* <div className="hidden gap-2 lg:flex"> */}
 
 
-          {/* <div> */}
-          <Link to='/signin'>
+          {/* <Link to='/signin'>
             <Button variant="text" size="lg" color="white">
               Log In
             </Button>
           </Link>
-          {/* </div> */}
           <Link to='/signup'>
             <Button variant="gradient" size="lg">
               Sign Up
             </Button>
-          </Link>
-        </div>
+          </Link> */}
+        {/* </div> */}
         <IconButton
           variant="text"
           color="white"
