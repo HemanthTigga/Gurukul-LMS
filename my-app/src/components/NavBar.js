@@ -161,8 +161,14 @@ function NavListMenu() {
 
 function NavList() {
   const  navigate = useNavigate()
+  const handleHome=()=>{
+    navigate('/', { replace: true });
+  }
   const handleContact=()=>{
     navigate('/contact', { replace: true });
+  }
+  const handleCourses=()=>{
+    navigate('/user/courses', { replace: true });
   }
   const handleSupport=()=>{
     navigate('/support', { replace: true });
@@ -179,7 +185,7 @@ function NavList() {
         color="white"
         className="font-medium"
       >
-        <ListItem className="flex items-center gap-2 py-2 pr-4">Home</ListItem>
+        <ListItem onClick={handleHome} className="flex items-center gap-2 py-2 pr-4">Home</ListItem>
       </Typography>
       <NavListMenu />
       <Typography
@@ -196,6 +202,26 @@ function NavList() {
         >
           Contact Me
         </ListItem>
+        
+        
+        
+      </Typography>
+      <Typography
+        as="a"
+        href="#"
+        variant="small"
+        color="white"
+        className="font-medium"
+      >
+
+        <ListItem 
+        className="flex items-center gap-2 py-2 pr-4"
+        onClick={handleCourses}
+        >
+          Courses
+        </ListItem>
+        
+        
         
       </Typography>
       <Typography

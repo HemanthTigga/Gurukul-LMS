@@ -68,6 +68,10 @@ import clientRoutes from "./routes/client.js";
 import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
+import getCourseData from "./controllers/getCourse.js";
+import createCourses from "./controllers/createCourse.js";
+import courseRoute from "./controllers/getCourseId.js";
+
 
 //data imports
 import User from "./models/User.js";
@@ -83,7 +87,7 @@ import {
     dataTransaction,
     dataOverallStat,
     dataAffiliateStat,
-  } from "./data/index.js";
+} from "./data/index.js";
 // const User = require("./models/User.js");
 // const {dataUser} = require("./data/index.js");
 
@@ -99,10 +103,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors())
 
 // ROUTES
-app.use("/client",clientRoutes);
-app.use("/general",generalRoutes);
-app.use("/management",managementRoutes);
-app.use("/sales",salesRoutes);
+app.use("/client", clientRoutes);
+app.use("/general", generalRoutes);
+app.use("/management", managementRoutes);
+app.use("/sales", salesRoutes);
 
 //mongodb atlas password
 // const pass = 'sIcAvRZCliyMj7Yi'
@@ -119,12 +123,14 @@ const schemaData = mongoose.Schema({
 const userModel = mongoose.model("employees", schemaData);
 // const userModel1 = mongoose.model("users", schemaData);
 
-
-
-
-
 const PORT = process.env.PORT || 9000;
 
+//courses
+app.post("/createcourse", createCourses)
+// app.get("/courses", getCourseData.getCourseData);
+app.get("/courses", getCourseData);
+// app.get('/getcourse/:id',courseDataId.courseData)
+app.use('/api', courseRoute)
 
 //read
 // "http://localhost:8080/"
@@ -180,15 +186,15 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
 })
 
-.then(() => {
-    console.log("Connected to DB")
-    app.listen(PORT, () => console.log(`Server is Running on ${PORT}`));
-    
-    // ONLY ADD DATA ONE TIME
-    // AffiliateStat.insertMany(dataAffiliateStat);
-    // OverallStat.insertMany(dataOverallStat);
-    // Product.insertMany(dataProduct);
-    // ProductStat.insertMany(dataProductStat);
-    // Transaction.insertMany(dataTransaction);
-    // User.insertMany(dataUser);
-}).catch((err) => console.log(`${err} did not connect`))
+    .then(() => {
+        console.log("Connected to DB")
+        app.listen(PORT, () => console.log(`Server is Running on ${PORT}`));
+
+        // ONLY ADD DATA ONE TIME
+        // AffiliateStat.insertMany(dataAffiliateStat);
+        // OverallStat.insertMany(dataOverallStat);
+        // Product.insertMany(dataProduct);
+        // ProductStat.insertMany(dataProductStat);
+        // Transaction.insertMany(dataTransaction);
+        // User.insertMany(dataUser);
+    }).catch((err) => console.log(`${err} did not connect`))

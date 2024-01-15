@@ -3,6 +3,7 @@ import FlexBetween from "components/FlexBetween";
 import Header from "components/Header";
 import {
   DownloadOutlined,
+  AddOutlined,
   Email,
   PointOfSale,
   PersonAdd,
@@ -20,9 +21,11 @@ import BreakdownChart from "components/BreakdownChart";
 import OverviewChart from "components/OverviewChart";
 import { useGetDashboardQuery } from "state/api";
 import StatBox from "components/StatBox";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const theme = useTheme();
+  const navigate = useNavigate()
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
   const { data, isLoading } = useGetDashboardQuery();
 
@@ -57,6 +60,9 @@ const Dashboard = () => {
     },
   ];
 
+  const handleAdd=(()=>{
+    navigate("/user/dashboard/add")
+  })
   return (
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
@@ -71,9 +77,10 @@ const Dashboard = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
+            onClick={handleAdd}
           >
-            <DownloadOutlined sx={{ mr: "10px" }} />
-            Download Reports
+            <AddOutlined sx={{ mr: "10px" }} />
+            Add Course
           </Button>
         </Box>
       </FlexBetween>

@@ -5,7 +5,6 @@ import Courses from './components/courses/Courses';
 import Companies from './components/companies/Companies';
 import Hero from './components/herosection/Hero';
 import Brain from './components/brain/Brain';
-import { NavBar } from './components/NavBar';
 import Achievement from './components/achievements/Achievement'
 import Categories from './components/categories/Categories';
 import Feedback from './components/feedback/Feedback';
@@ -41,6 +40,10 @@ import Monthly from 'components/scenes/monthly';
 import Breakdown from 'components/scenes/breakdown';
 import Admin from 'components/scenes/admin';
 import Performance from 'components/scenes/performance';
+import MainCourse from 'components/CoursesProduct/MainCourse';
+import Pages from 'components/CoursesProduct/Pages';
+import { NestRouter } from './NestRouter';
+import { NavBar } from 'components';
 
 
 const endPoint = "https://prod-in2.100ms.live/hmsapi/hemanth-videoconf-003.app.100ms.live/";
@@ -96,14 +99,17 @@ function App() {
         </button> */}
 
       <Router>
+          {/* <NavBar/> */}
         <ThemeProvider theme={theme}>
           <CssBaseline />
-
           <Routes>
             <Route path='/register' element={<SignUp />} />
             <Route path='/login' element={<SignIn onSignIn={handleSignIn} />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/allusers' element={<AllUsers />} />
+            {/* <Route path="/courses" element={<MainCourse />} />
+            <Route path='/watch/:id' element={<Pages/>}/> */}
+            <Route path="/user/*" element={<NestRouter />} />
             <Route path="/" element={isLoggedIn ? <Home /> : <SignUp />} />
             {/* <Route path="/support" element={<Support />} /> */}
             <Route path="/support" element={isConnected ? <Room /> : <Support handleSubmit={handleSubmit} />} />
@@ -124,7 +130,7 @@ function App() {
               <Route path="performance" element={<Performance />} />
             </Route>
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </ThemeProvider>
       </Router>
     </div>
